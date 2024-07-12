@@ -30,7 +30,7 @@ function App() {
   }, [length, numberAllowed, characterAllowed, setPassword]);
 
   const copyPassword = useCallback(() => {
-    window.navigator.clipboard.writeText(password);
+    navigator.clipboard.writeText(password);
     setCopyButton(
       "flex items-center justify-center bg-green-600 text-white rounded-r-lg h-10 px-4"
     );
@@ -48,9 +48,9 @@ function App() {
   return (
     <>
       <div className="flex flex-col items-center h-screen w-screen">
-        <h1 className="text-5xl mt-4 text-white">Password Generator</h1>
-        <div className="flex justify-center mt-5 h-full w-full">
-          <div className="container h-1/4 w-1/3 bg-slate-800 rounded-3xl shadow-2xl p-5">
+        <h1 className="text-4xl sm:text-7xl mt-12 text-white font-serif">Password Generator</h1>
+        <div className="flex justify-center mt-28 lg:mt-5 h-full w-full">
+          <div className="container h-4/6 w-5/6 lg:h-1/4 lg:w-1/3 2xl:h-1/6 bg-slate-800 rounded-3xl shadow-2xl p-5">
             <div className="flex flex-col">
               <div className="flex">
                 <input
@@ -68,21 +68,21 @@ function App() {
                   {copyStatus}
                 </button>
               </div>
-              <div className="flex flex-wrap mt-7 text-yellow-500 space-x-3">
-                <div>
+              <div className="mt-24 lg:flex lg:mt-7 text-yellow-500 lg:space-x-3">
+                <div className="flex flex-col items-center justify-center lg:flex-row lg:justify-start">
                   <input
                     type="range"
                     value={length}
                     min={6}
                     max={100}
-                    className="cursor-pointer mr-1"
+                    className="cursor-pointer mr-1  w-full lg:w-3/5 mb-3 lg:mb-0"
                     onChange={(e) => {
                       setLength(e.target.value);
                     }}
                   ></input>
-                  <label>Length {length}</label>{" "}
+                  <label className="text-xl md:text-base">Length {length}</label>{" "}
                 </div>
-                <div>
+                <div className="flex items-center justify-center mt-4 lg:flex-row lg:justify-start lg:mt-0">
                   <input
                     className="mr-1"
                     defaultChecked={numberAllowed}
@@ -92,9 +92,9 @@ function App() {
                       setNumberAllowed((prev) => !prev);
                     }}
                   ></input>
-                  <label>Numbers </label>{" "}
+                  <label className="text-xl md:text-base">Numbers </label>
                 </div>
-                <div>
+                <div className="flex items-center justify-center mt-4 lg:flex-row lg:justify-start lg:mt-0">
                   <input
                     className="mr-1"
                     defaultChecked={characterAllowed}
@@ -104,7 +104,7 @@ function App() {
                       setCharacterAllowed((prev) => !prev);
                     }}
                   ></input>
-                  <label>Characters </label>
+                  <label className="text-xl md:text-base">Characters </label>
                 </div>
               </div>
             </div>
